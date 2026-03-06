@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+    <title>Randomer</title>
+</head>
+<body>
+<button class="secret" id="secret"></button>
+
+<div class="wrap">
+    <div class="base">
+        <h1 class="random_title">Randomiser</h1>
+
+        <!-- Password panel – shown when secret is clicked -->
+        <div id="password-panel" class="password-panel">
+            <p class="password-title">Enter password</p>
+            <input type="password" id="password-input" placeholder="Password..." autocomplete="off">
+            <button id="password-submit">Unlock</button>
+            <p id="password-error" class="password-error"></p>
+        </div>
+
+        <!-- Avoid checklist – hidden until correct password -->
+        <div id="avoid-panel" class="avoid-panel">
+            <p class="avoid-title">Avoid these numbers:</p>
+            <div class="avoid-grid" id="avoid-list"></div>
+            <p class="avoid-hint">(checked numbers will be skipped if possible)</p>
+        </div>
+
+        <div id="result" class="result-display">?</div>
+
+        <p class="ptext">MIN</p>
+        <input type="number" class="min_input" placeholder="e.g. 1">
+
+        <p class="ptext">MAX</p>
+        <input type="number" class="max_input" placeholder="e.g. 100">
+
+        <button class="random_button">Generate</button>
+    </div>
+</div>
+
+<script src="./Randomer.js"></script>
+</body>
+</html>
