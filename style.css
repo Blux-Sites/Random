@@ -14,6 +14,7 @@ body {
 }
 
 .base {
+    position: relative;                     /* ← Added: needed for absolute positioning of .secret */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,26 +111,33 @@ input:focus {
     transform: translateY(1px);
 }
 
+/* ──────────────────────────────────────────────── */
+/*                  Secret button                   */
+/* ──────────────────────────────────────────────── */
+
 .secret {
-    position: fixed;
+    position: absolute;
     top: 12px;
-    right: 12px;
-    width: 24px;
-    height: 24px;
+    left: 12px;
+    width: 5px;
+    height: 10px;
     background: transparent;
     border: none;
     cursor: pointer;
-    opacity: 0.18;
-    border-radius: 4px;
-    transition: opacity 0.2s, background-color 0.3s;
+    opacity: 0;
+    pointer-events: auto;
+    z-index: 10;
+    border-radius: 2px;
 }
 
-.secret:hover {
-    opacity: 0.40;
+.secret:hover,
+.secret:focus {
+    background: rgba(0, 100, 255, 0.06);
+    opacity: 0.12;
 }
 
-.secret.active {
-    background-color: rgba(158, 158, 158, 0.20);
+.secret:active {
+    background: rgba(0, 100, 255, 0.15);
 }
 
 /* ──────────────────────────────────────────────── */
@@ -207,24 +215,37 @@ input:focus {
     text-align: center;
 }
 
-.avoid-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px 8px;
+.avoid-dynamic-list {
+    max-height: 220px;
+    overflow-y: auto;
+    padding: 8px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
     margin-bottom: 16px;
 }
 
-.avoid-item {
+.avoid-dynamic-item {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 6px;
-    font-size: 0.95rem;
+    padding: 6px 8px;
+    border-radius: 6px;
 }
 
-.avoid-item input[type="checkbox"] {
+.avoid-dynamic-item:hover {
+    background: #f8f9fa;
+}
+
+.avoid-dynamic-item input[type="checkbox"] {
+    margin-right: 10px;
     accent-color: #d32f2f;
     cursor: pointer;
+}
+
+.avoid-dynamic-item label {
+    cursor: pointer;
+    font-size: 1rem;
+    color: #333;
 }
 
 .avoid-hint {
@@ -382,46 +403,8 @@ input:focus {
     background: #d8d8d8;
 }
 
-/* Extra spacing fix when avoid panel is visible */
-.avoid-panel.visible + .result-display {
+/* Extra spacing when panels are visible */
+.avoid-panel.visible + .result-display,
+.password-panel.visible + .result-display {
     margin-top: 24px;
-}
-/* Replace .avoid-grid with this */
-.avoid-dynamic-list {
-    max-height: 220px;
-    overflow-y: auto;
-    padding: 8px;
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    margin-bottom: 16px;
-}
-
-.avoid-dynamic-item {
-    display: flex;
-    align-items: center;
-    padding: 6px 8px;
-    border-radius: 6px;
-}
-
-.avoid-dynamic-item:hover {
-    background: #f8f9fa;
-}
-
-.avoid-dynamic-item input[type="checkbox"] {
-    margin-right: 10px;
-    accent-color: #d32f2f;
-    cursor: pointer;
-}
-
-.avoid-dynamic-item label {
-    cursor: pointer;
-    font-size: 1rem;
-    color: #333;
-}
-
-/* Optional - highlight custom-added ones differently */
-.avoid-dynamic-item.custom {
-    font-weight: 500;
-    color: #0066cc;
 }

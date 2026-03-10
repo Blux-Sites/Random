@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Randomer</title>
+    <title>Randomiser</title>
 </head>
 <body>
 
-<button class="secret" id="secret"></button>
-
 <div class="wrap">
     <div class="base">
+        <!-- Secret button moved inside .base and positioned top-left -->
+        <button class="secret" id="secret"></button>
+
         <h1 class="random_title">Randomiser</h1>
 
         <!-- Password panel -->
@@ -29,7 +30,7 @@
             <!-- Dynamic list of currently avoided numbers -->
             <div id="avoid-dynamic-list" class="avoid-dynamic-list"></div>
 
-            <!-- Custom input remains -->
+            <!-- Custom input -->
             <div class="custom-avoid-section">
                 <p class="custom-title">Add / remove number:</p>
                 <div class="custom-input-row">
@@ -41,7 +42,7 @@
 
             <p class="avoid-hint">Numbers with checkbox = avoided (will be skipped when generating)</p>
 
-            <!-- Optional: still keep the show allowed button -->
+            <!-- Show allowed numbers panel trigger -->
             <div class="search-section">
                 <button id="show-allowed-btn" class="secondary-button">Show allowed numbers</button>
                 <div id="allowed-numbers-panel" class="allowed-panel hidden">
