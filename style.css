@@ -19,7 +19,7 @@ body {
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    max-width: 420px;
+    max-width: 440px;
     background-color: white;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -35,7 +35,6 @@ body {
     text-align: center;
 }
 
-/* Result display */
 .result-display {
     font-size: 4.2rem;
     font-weight: bold;
@@ -49,7 +48,7 @@ body {
     width: 100%;
     margin-bottom: 32px;
     border: 2px dashed #b3d4fc;
-    transition: color 0.4s ease, border-color 0.4s ease, background-color 0.4s ease;
+    transition: all 0.4s ease;
 }
 
 .result-display.has-result {
@@ -111,7 +110,6 @@ input:focus {
     transform: translateY(1px);
 }
 
-/* Secret button */
 .secret {
     position: fixed;
     top: 12px;
@@ -134,7 +132,10 @@ input:focus {
     background-color: rgba(158, 158, 158, 0.20);
 }
 
-/* Password panel */
+/* ──────────────────────────────────────────────── */
+/*                Password Panel                    */
+/* ──────────────────────────────────────────────── */
+
 .password-panel {
     display: none;
     width: 100%;
@@ -180,7 +181,10 @@ input:focus {
     min-height: 1.2em;
 }
 
-/* Avoid panel */
+/* ──────────────────────────────────────────────── */
+/*                 Avoid Panel                      */
+/* ──────────────────────────────────────────────── */
+
 .avoid-panel {
     display: none;
     width: 100%;
@@ -207,7 +211,7 @@ input:focus {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px 8px;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 
 .avoid-item {
@@ -224,8 +228,200 @@ input:focus {
 }
 
 .avoid-hint {
-    margin: 0;
+    margin: 8px 0 16px 0;
     font-size: 0.85rem;
     color: #777;
     text-align: center;
+}
+
+/* ──────────────────────────────────────────────── */
+/*           Custom number avoid input              */
+/* ──────────────────────────────────────────────── */
+
+.custom-avoid-section {
+    margin: 16px 0;
+    padding-top: 16px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.custom-title {
+    margin: 0 0 10px 0;
+    font-weight: 600;
+    color: #444;
+    font-size: 0.98rem;
+    text-align: center;
+}
+
+.custom-input-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+#custom-avoid-input {
+    flex: 1;
+    height: 44px;
+    font-size: 1.05rem;
+}
+
+#custom-avoid-btn {
+    height: 44px;
+    padding: 0 16px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    background-color: #0066cc;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+}
+
+#custom-avoid-btn:hover {
+    background-color: #0055b3;
+}
+
+.custom-status {
+    margin: 4px 0 0 0;
+    font-size: 0.9rem;
+    text-align: center;
+    min-height: 1.3em;
+}
+
+.custom-status.added {
+    color: #2e7d32;
+}
+
+.custom-status.removed,
+.custom-status.not-in-list {
+    color: #d32f2f;
+}
+
+.custom-status.neutral {
+    color: #555;
+}
+
+/* ──────────────────────────────────────────────── */
+/*         Show Allowed Numbers / Search            */
+/* ──────────────────────────────────────────────── */
+
+.search-section {
+    margin-top: 12px;
+}
+
+.secondary-button {
+    width: 100%;
+    height: 44px;
+    font-size: 1.05rem;
+    color: #0066cc;
+    background-color: white;
+    border: 2px solid #0066cc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.secondary-button:hover {
+    background-color: #f0f7ff;
+}
+
+.allowed-panel {
+    margin-top: 16px;
+    background: #f0f8ff;
+    border: 1px solid #b3d4fc;
+    border-radius: 10px;
+    padding: 16px;
+}
+
+.allowed-panel.hidden {
+    display: none;
+}
+
+.allowed-title {
+    margin: 0 0 12px 0;
+    font-weight: 600;
+    color: #004080;
+    text-align: center;
+}
+
+.allowed-list {
+    max-height: 260px;
+    overflow-y: auto;
+    background: white;
+    border: 1px solid #d0e0ff;
+    border-radius: 8px;
+    padding: 12px;
+    font-family: monospace;
+    font-size: 0.98rem;
+    line-height: 1.45;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.allowed-count {
+    margin: 12px 0 16px 0;
+    text-align: center;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.close-btn {
+    width: 100%;
+    height: 42px;
+    font-size: 1.02rem;
+    color: #555;
+    background: #e8e8e8;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.close-btn:hover {
+    background: #d8d8d8;
+}
+
+/* Extra spacing fix when avoid panel is visible */
+.avoid-panel.visible + .result-display {
+    margin-top: 24px;
+}
+/* Replace .avoid-grid with this */
+.avoid-dynamic-list {
+    max-height: 220px;
+    overflow-y: auto;
+    padding: 8px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.avoid-dynamic-item {
+    display: flex;
+    align-items: center;
+    padding: 6px 8px;
+    border-radius: 6px;
+}
+
+.avoid-dynamic-item:hover {
+    background: #f8f9fa;
+}
+
+.avoid-dynamic-item input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: #d32f2f;
+    cursor: pointer;
+}
+
+.avoid-dynamic-item label {
+    cursor: pointer;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Optional - highlight custom-added ones differently */
+.avoid-dynamic-item.custom {
+    font-weight: 500;
+    color: #0066cc;
 }

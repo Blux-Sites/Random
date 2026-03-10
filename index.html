@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <title>Randomer</title>
 </head>
 <body>
+
 <button class="secret" id="secret"></button>
 
 <div class="wrap">
     <div class="base">
         <h1 class="random_title">Randomiser</h1>
 
-        <!-- Password panel – shown when secret is clicked -->
+        <!-- Password panel -->
         <div id="password-panel" class="password-panel">
             <p class="password-title">Enter password</p>
             <input type="password" id="password-input" placeholder="Password..." autocomplete="off">
@@ -20,20 +22,46 @@
             <p id="password-error" class="password-error"></p>
         </div>
 
-        <!-- Avoid checklist – hidden until correct password -->
+        <!-- Avoid panel -->
         <div id="avoid-panel" class="avoid-panel">
             <p class="avoid-title">Avoid these numbers:</p>
-            <div class="avoid-grid" id="avoid-list"></div>
-            <p class="avoid-hint">(checked numbers will be skipped if possible)</p>
+
+            <!-- Dynamic list of currently avoided numbers -->
+            <div id="avoid-dynamic-list" class="avoid-dynamic-list"></div>
+
+            <!-- Custom input remains -->
+            <div class="custom-avoid-section">
+                <p class="custom-title">Add / remove number:</p>
+                <div class="custom-input-row">
+                    <input type="number" id="custom-avoid-input" placeholder="e.g. 42, -7, 1000000" min="-1000000000000" max="1000000000000">
+                    <button id="custom-avoid-btn">Toggle</button>
+                </div>
+                <p id="custom-avoid-status" class="custom-status"></p>
+            </div>
+
+            <p class="avoid-hint">Numbers with checkbox = avoided (will be skipped when generating)</p>
+
+            <!-- Optional: still keep the show allowed button -->
+            <div class="search-section">
+                <button id="show-allowed-btn" class="secondary-button">Show allowed numbers</button>
+                <div id="allowed-numbers-panel" class="allowed-panel hidden">
+                    <p class="allowed-title">Possible numbers (not avoided):</p>
+                    <div id="allowed-list" class="allowed-list"></div>
+                    <p id="allowed-count" class="allowed-count"></p>
+                    <button id="close-allowed-btn" class="close-btn">Close</button>
+                </div>
+            </div>
         </div>
 
+        <!-- Result display -->
         <div id="result" class="result-display">?</div>
 
+        <!-- Inputs -->
         <p class="ptext">MIN</p>
-        <input type="number" class="min_input" placeholder="e.g. 1">
+        <input type="number" class="min_input" placeholder="e.g. 1" min="-1000000000000" max="1000000000000">
 
         <p class="ptext">MAX</p>
-        <input type="number" class="max_input" placeholder="e.g. 100">
+        <input type="number" class="max_input" placeholder="e.g. 100" min="-1000000000000" max="1000000000000">
 
         <button class="random_button">Generate</button>
     </div>
